@@ -1,0 +1,34 @@
+{
+    "manifestVersion": 1,
+    "id": "amazon-api-authenticate",
+    "publisher": "MaxenceRaoux",
+    "version": "0.1.17",
+    "name": "Amazon api authentication",
+    "description": "Authenticate to the amazon api",
+    "public": false,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "files": [
+        {
+            "path": "amazonAuthTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "amazonAuthTask"
+            }
+        }
+    ]
+}
