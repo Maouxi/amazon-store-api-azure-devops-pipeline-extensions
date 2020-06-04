@@ -13,7 +13,8 @@ const tl = require("azure-pipelines-task-lib/task");
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Start create or edit');
-        //var token = tl.getPro
+        var token = tl.getVariable("AmazonAuthTask.AmazonAuthToken");
+        console.log(`Token: ${token}`);
         tl.setResult(tl.TaskResult.Succeeded, "Success");
     });
 }
