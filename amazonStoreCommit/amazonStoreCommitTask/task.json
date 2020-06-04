@@ -13,6 +13,14 @@
         "Patch": 1
     },
     "inputs": [
+        {
+            "name": "appId",
+            "type": "string",
+            "label": "AppId",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "The package name or app identifier for the app."
+        }
     ],
     "execution": {
         "Node10": {

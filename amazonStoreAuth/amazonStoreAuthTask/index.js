@@ -10,12 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const tl = require("azure-pipelines-task-lib/task");
-const https = require("https");
 const querystring = require("querystring");
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Start authentication');
         try {
+            var request = require('sync-request');
             const clientId = tl.getInput('clientId', true);
             if (clientId == undefined) {
                 tl.setResult(tl.TaskResult.Failed, 'ClientId is required');
@@ -26,44 +26,26 @@ function run() {
                 tl.setResult(tl.TaskResult.Failed, 'ClientSecret is required');
                 return;
             }
-            const hostname = 'api.amazon.com';
-            const tokenPath = '/auth/o2/token';
             const data = querystring.stringify({
                 client_id: clientId,
                 client_secret: clientSecret,
                 grant_type: "client_credentials",
                 scope: "appstore::apps:readwrite"
             });
-            const options = {
-                hostname: hostname,
-                port: 443,
-                path: tokenPath,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Content-Length': data.length
-                }
+            var options = {
+                'headers': { 'Content-Type': 'application/x-www-form-urlencoded', 'Content-Length': data.length },
+                'body': data
             };
-            const req = https.request(options, (res) => {
-                console.log(`Api call status code: ${res.statusCode}`);
-                var result = '';
-                res.on('data', function (chunk) {
-                    result += chunk;
-                });
-                res.on('end', function () {
-                    var obj = JSON.parse(result.toString());
-                    var accessToken = obj.access_token;
-                    console.log(`Access token = ${accessToken}`);
-                    tl.setVariable('AmazonAuthToken', `${accessToken}`);
-                    tl.setResult(tl.TaskResult.Succeeded, "Success");
-                });
-            });
-            req.on('error', (error) => {
-                console.log(`error: ${error}`);
-                tl.setResult(tl.TaskResult.Failed, error.message);
-            });
-            req.write(data);
-            req.end();
+            var res = request('POST', `https://api.amazon.com/auth/o2/token`, options);
+            console.log(`Api call status code: ${res.statusCode}`);
+            if (res.statusCode = 200) {
+                var obj = JSON.parse(res.getBody().toString());
+                tl.setVariable('AmazonAuthToken', `${obj.access_token}`);
+                tl.setResult(tl.TaskResult.Succeeded, "Success");
+            }
+            else {
+                throw `Fail to authenticate :${res.statusCode}`;
+            }
         }
         catch (err) {
             console.log(`error: ${err}`);
