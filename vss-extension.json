@@ -1,10 +1,10 @@
 {
     "manifestVersion": 1,
-    "id": "amazon-api-authenticate",
+    "id": "amazon-app-store",
     "publisher": "MaxenceRaoux",
     "version": "0.1.17",
-    "name": "Amazon api authentication",
-    "description": "Authenticate to the amazon api",
+    "name": "Amazon AppStore",
+    "description": "Provide task for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
     "public": false,
     "targets": [
         {
@@ -17,6 +17,12 @@
     "files": [
         {
             "path": "amazonAuthTask"
+        }, 
+        {
+            "path": "amazonEditTask"
+        }, 
+        {
+            "path": "amazonCommitTask"
         }
     ],
     "contributions": [
