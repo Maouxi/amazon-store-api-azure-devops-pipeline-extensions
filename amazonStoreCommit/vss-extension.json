@@ -1,10 +1,10 @@
 {
     "manifestVersion": 1,
-    "id": "amazon-app-store",
+    "id": "amazon-app-store-commit",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.17",
-    "name": "Amazon AppStore",
-    "description": "Provide task for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
+    "version": "0.1.0",
+    "name": "Amazon AppStore commit API",
+    "description": "Provide commit task for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
     "public": false,
     "targets": [
         {
@@ -16,13 +16,7 @@
     ],
     "files": [
         {
-            "path": "amazonAuthTask"
-        }, 
-        {
-            "path": "amazonEditTask"
-        }, 
-        {
-            "path": "amazonCommitTask"
+            "path": "amazonStoreCommitTask"
         }
     ],
     "contributions": [
@@ -33,7 +27,7 @@
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "amazonAuthTask"
+                "name": "amazonStoreCommitTask"
             }
         }
     ]

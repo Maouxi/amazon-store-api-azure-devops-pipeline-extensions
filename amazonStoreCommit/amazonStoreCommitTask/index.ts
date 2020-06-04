@@ -3,7 +3,11 @@ import https = require('https')
 import querystring = require('querystring');
 
 async function run() {
-    console.log('Start create or edit');
+    console.log('Start commit app');
+    
+    var token = tl.getVariable("AmazonAuthTask.AmazonAuthToken")
+    console.log(`Token: ${token}`);
+    
 	tl.setResult(tl.TaskResult.Succeeded, "Success");
 }
 

@@ -1,9 +1,9 @@
 {
     "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
     "id": "6cc6499b-11a8-4e1e-ad32-77deab249c98",
-    "name": "AmazonCreateEditTask",
-    "friendlyName": "AmazonEditTask",
-    "description": "Create or edit an app update",
+    "name": "AmazonSotreEditTask",
+    "friendlyName": "AmazonSotreEditTask",
+    "description": "Create or edit an app update to the amazon app store",
     "helpMarkDown": "",
     "category": "Utility",
     "author": "MaxenceRaoux",
@@ -13,14 +13,6 @@
         "Patch": 0
     },
     "inputs": [
-        {
-            "name": "amazonAuthToken",
-            "type": "string",
-            "label": "Access token",
-            "defaultValue": "",
-            "required": true,
-            "helpMarkDown": "Amazon API access token"
-        }
     ],
     "execution": {
         "Node10": {

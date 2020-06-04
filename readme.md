@@ -2,6 +2,9 @@
 
 ()[]
 
+# Init
+In the root folder and inside all tasks: 
+`npm install`
 
 # Debug
 

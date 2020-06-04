@@ -1,7 +1,7 @@
 {
-  "name": "AmazonAuthApi",
+  "name": "AmazonStoreCommitTask",
   "version": "1.0.0",
-  "description": "Amazon auth api task",
+  "description": "Amazon commit app update api task",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
