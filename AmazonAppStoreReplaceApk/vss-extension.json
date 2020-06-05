@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "amazon-app-store-replace-apk",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "name": "Amazon AppStore replace apk API",
     "description": "Replace an apk of an active edit for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
     "public": false,
@@ -19,6 +19,9 @@
             "path": "AmazonAppStoreReplaceApkTask"
         }
     ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
     "contributions": [
         {
             "id": "custom-build-release-task",

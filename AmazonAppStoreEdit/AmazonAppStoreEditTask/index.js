@@ -39,7 +39,6 @@ function getActiveEdit(appId, token) {
     var request = require('sync-request');
     var options = { 'headers': { 'Authorization': `bearer ${token}`, "accept": "application/json" } };
     var res = request('GET', `${endpoint}/${appId}/edits`, options);
-    console.log(res);
     if (res.statusCode == 200) {
         var obj = JSON.parse(res.getBody().toString());
         console.log(`GET - Retrieve active edits success. Status: ${obj.status} | Id: ${obj.id}`);
