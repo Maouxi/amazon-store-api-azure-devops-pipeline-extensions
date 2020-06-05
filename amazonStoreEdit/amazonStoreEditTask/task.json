@@ -10,7 +10,7 @@
     "version": {
         "Major": 0,
         "Minor": 1,
-        "Patch": 2
+        "Patch": 3
     },
     "inputs": [
         {
@@ -23,7 +23,7 @@
         }, 
         {
             "name": "apkFilePath",
-            "type": "string",
+            "type": "filePath",
             "label": "Apk file path",
             "defaultValue": "",
             "required": true,
