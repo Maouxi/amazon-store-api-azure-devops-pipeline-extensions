@@ -7,9 +7,8 @@ var endpoint = "https://developer.amazon.com/api/appstore/v1/applications";
 
 async function run() {
     console.log('Start create or edit');
-    //TODO: remove this line
-    var token = "Atc|MQEBIB6jGF7b4nLJImMsnWWZL_y10C5KbGVe_GVYFecBjA_ihM3S9pe_ITE6lTF10wSM6HuoqxeaKDNIm1cV_k_ku-gmQ8L1tX1uXp4OtqxdnNbVxcxu29UqFPHLsdHh6g0f64GUExBl0zDXQM31rmuVTIAo20irc8HqRDv0XtbsHzRnShh77jT_JGv2dwvRwpVcjrwp9kLUF9Glcmc3iGla7fz3J6TqZW6T5-YRf7oTuaB2AVC7Mvu7_qFXRvkfnEBZFvmRN4gUO6wZfYeL_WbbD479kBrgA-f0rja4yA2xe5u8eg";
-    //var token = tl.getVariable("AmazonAuthTask.AmazonAuthToken");
+    
+    var token = tl.getVariable("AmazonAuthTask.AmazonAuthToken");
     if (token == undefined) {
         tl.setResult(tl.TaskResult.Failed, `You need to use the Auth task first to get a valid access_token`);
         return;
