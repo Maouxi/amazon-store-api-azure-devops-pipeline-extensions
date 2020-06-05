@@ -14,12 +14,14 @@ const fs = require("fs");
 var endpoint = "https://developer.amazon.com/api/appstore/v1/applications";
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log('Start create or edit');
-        //TODO: remove this line
-        var token = "Atc|MQEBIB6jGF7b4nLJImMsnWWZL_y10C5KbGVe_GVYFecBjA_ihM3S9pe_ITE6lTF10wSM6HuoqxeaKDNIm1cV_k_ku-gmQ8L1tX1uXp4OtqxdnNbVxcxu29UqFPHLsdHh6g0f64GUExBl0zDXQM31rmuVTIAo20irc8HqRDv0XtbsHzRnShh77jT_JGv2dwvRwpVcjrwp9kLUF9Glcmc3iGla7fz3J6TqZW6T5-YRf7oTuaB2AVC7Mvu7_qFXRvkfnEBZFvmRN4gUO6wZfYeL_WbbD479kBrgA-f0rja4yA2xe5u8eg";
-        //var token = tl.getVariable("AmazonAuthTask.AmazonAuthToken");
+        var token = tl.getVariable("AmazonAuthTask.AmazonAuthToken");
         if (token == undefined) {
             tl.setResult(tl.TaskResult.Failed, `You need to use the Auth task first to get a valid access_token`);
+            return;
+        }
+        var editId = tl.getVariable("AmazonAppStoreEditTask.AmazonEditId");
+        if (editId == undefined) {
+            tl.setResult(tl.TaskResult.Failed, `You need to use the Edit task first to get a valid editId`);
             return;
         }
         const appId = tl.getInput('appId', true);
@@ -33,12 +35,15 @@ function run() {
             return;
         }
         try {
-            //Get or create active edit
-            console.log(`- Start create or edit for appId: ${appId}`);
-            var editId = getActiveEdit(appId, token);
+            //Get the lastest apk id
+            console.log(`- Get latest apk id for editId: ${editId}`);
+            var apkId = getLatestApkId(appId, editId, token);
+            // //Get etag for current apk
+            console.log(`- Get an etag for apk id: ${apkId}`);
+            var etag = getApkEtag(appId, editId, apkId, token);
             //Update the current edit with a new apk
-            console.log(`- Start upload apk: ${apkFilePath}`);
-            updateApk(appId, editId, apkFilePath, token);
+            console.log(`- Start upload apk with id ${apkId} and etag ${etag} from file: ${apkFilePath}`);
+            replaceApk(appId, editId, apkId, apkFilePath, etag, token);
             //End update
             tl.setResult(tl.TaskResult.Succeeded, `Successfully update app ${editId}`);
         }
@@ -48,58 +53,51 @@ function run() {
         }
     });
 }
-function getActiveEdit(appId, token) {
+function getLatestApkId(appId, editId, token) {
     var request = require('sync-request');
     var options = { 'headers': { 'Authorization': `bearer ${token}`, "accept": "application/json" } };
-    var res = request('GET', `${endpoint}/${appId}/edits`, options);
-    console.log(`GET - Retrieve active edits. Code: ${res.statusCode}`);
+    var res = request('GET', `${endpoint}/${appId}/edits/${editId}/apks`, options);
     if (res.statusCode == 200) {
         var obj = JSON.parse(res.getBody().toString());
-        console.log(`GET - Retrieve active edits success. Status: ${obj.status} | Id: ${obj.id}`);
-        return obj.id;
-    }
-    else if (res.statusCode == 404) {
-        console.log(`GET - Retrieve active edits not found.`);
-        return createNewEdit(appId, token);
+        console.log(`GET - Retrieve apk list success. Apk count: ${obj.length}. Latest apk id: ${obj[0].id}`);
+        return obj[0].id;
     }
     else {
-        throw `GET - Retrieve active edits fail. Code: ${res.statusCode}`;
+        throw `GET - Retrieve apk list fail. Code: ${res.statusCode}. Resp: ^${res.getBody()}`;
     }
 }
-function createNewEdit(appId, token) {
+function getApkEtag(appId, editId, apkId, token) {
     var request = require('sync-request');
     var options = { 'headers': { 'Authorization': `bearer ${token}`, "accept": "application/json" } };
-    var res = request('POST', `${endpoint}/${appId}/edits`, options);
-    console.log(`POST - Create new edits. Code: ${res.statusCode}`);
+    var res = request('GET', `${endpoint}/${appId}/edits/${editId}/apks/${apkId}`, options);
     if (res.statusCode == 200) {
-        var obj = JSON.parse(res.getBody().toString());
-        console.log(`POST - Create new edits success. Status: ${obj.status} | Id: ${obj.id}`);
-        return obj.id;
+        console.log(`GET - Retrieve apk etag success`);
+        return res.headers.etag;
     }
     else {
-        throw `POST - Create new edits. Code: ${res.statusCode}`;
+        throw `GET - Retrieve apk etag fail. Code: ${res.statusCode}. Resp: ^${res.getBody()}`;
     }
 }
-function updateApk(appId, editId, apkFilePath, token) {
+function replaceApk(appId, editId, apkId, apkFilePath, etag, token) {
     var _a, _b, _c;
     var request = require('sync-request');
-    var fileBuffer = fs.readFileSync(apkFilePath, { encoding: 'utf8', flag: 'r' });
+    var fileBuffer = fs.readFileSync(apkFilePath);
     var options = {
         'headers': {
             'Authorization': `bearer ${token}`,
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/vnd.android.package-archive',
             'Content-Length': fileBuffer.length,
+            'If-Match': etag,
             'fileName': (_c = (_b = (_a = apkFilePath.split('\\')) === null || _a === void 0 ? void 0 : _a.pop()) === null || _b === void 0 ? void 0 : _b.split('/').pop()) === null || _c === void 0 ? void 0 : _c.toString()
         },
         'body': fileBuffer
     };
-    var res = request('POST', `${endpoint}/${appId}/edits/${editId}/apks/upload`, options);
-    console.log(`POST - Upload apk. Code: ${res.statusCode}`);
+    var res = request('PUT', `${endpoint}/${appId}/edits/${editId}/apks/${apkId}/replace`, options);
     if (res.statusCode == 200) {
-        console.log(`POST - Upload apk success`);
+        console.log(`PUT - Replace apk success`);
     }
     else {
-        throw `POST - Upload apk fail. Code: ${res.statusCode}`;
+        throw `PUT - Replace apk fail. Code: ${res.statusCode}. Resp: ^${res.getBody()}`;
     }
 }
 run();

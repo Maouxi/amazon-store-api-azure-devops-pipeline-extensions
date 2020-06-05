@@ -1,22 +1,22 @@
 {
     "manifestVersion": 1,
-    "id": "amazon-app-store-edit",
+    "id": "amazon-app-store-auth",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.3",
-    "name": "Amazon AppStore edit API",
-    "description": "Provide edit task for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
+    "version": "0.1.21",
+    "name": "Amazon AppStore authentication API",
+    "description": "Get an authentication access token for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
     "public": false,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
-    ],    
+    ],
     "categories": [
         "Azure Pipelines"
     ],
     "files": [
         {
-            "path": "amazonStoreEditTask"
+            "path": "AmazonAppStoreAuthTask"
         }
     ],
     "contributions": [
@@ -27,7 +27,7 @@
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "amazonStoreEditTask"
+                "name": "AmazonAppStoreAuthTask"
             }
         }
     ]

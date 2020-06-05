@@ -1,16 +1,16 @@
 {
     "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
     "id": "6cc6499b-11a8-4e1e-ad32-77deab249c98",
-    "name": "AmazonSotreEditTask",
-    "friendlyName": "AmazonSotreEditTask",
-    "description": "Create or edit an app update to the amazon app store",
+    "name": "AmazonAppStoreEditTask",
+    "friendlyName": "Amazon AppStore create or edit update task",
+    "description": "Create or edit an app update to the amazon app store.",
     "helpMarkDown": "",
     "category": "Utility",
     "author": "MaxenceRaoux",
     "version": {
         "Major": 0,
         "Minor": 1,
-        "Patch": 3
+        "Patch": 5
     },
     "inputs": [
         {
@@ -20,14 +20,12 @@
             "defaultValue": "",
             "required": true,
             "helpMarkDown": "The package name or app identifier for the app."
-        }, 
+        }
+    ],
+    "OutputVariables": [
         {
-            "name": "apkFilePath",
-            "type": "filePath",
-            "label": "Apk file path",
-            "defaultValue": "",
-            "required": true,
-            "helpMarkDown": "Path to the apk file."            
+            "name": "AmazonEditId",
+            "description": "Amazon AppStore editId"
         }
     ],
     "execution": {

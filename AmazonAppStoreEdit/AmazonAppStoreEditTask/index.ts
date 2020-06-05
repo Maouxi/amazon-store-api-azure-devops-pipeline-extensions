@@ -1,13 +1,8 @@
 import tl = require('azure-pipelines-task-lib/task');
-import https = require('https')
-import querystring = require('querystring');
-import fs = require('fs');
 
 var endpoint = "https://developer.amazon.com/api/appstore/v1/applications";
 
 async function run() {
-    console.log('Start create or edit');
-    
     var token = tl.getVariable("AmazonAuthTask.AmazonAuthToken");
     if (token == undefined) {
         tl.setResult(tl.TaskResult.Failed, `You need to use the Auth task first to get a valid access_token`);
@@ -25,13 +20,9 @@ async function run() {
     }
 
     try {
-        //Get or create active edit
         console.log(`- Start create or edit for appId: ${appId}`);
         var editId = getActiveEdit(appId, token);
-        //Update the current edit with a new apk
-        console.log(`- Start upload apk: ${apkFilePath}`);
-        updateApk(appId, editId, apkFilePath, token);
-        //End update
+        tl.setVariable("AmazonUpdateEditId", editId)
         tl.setResult(tl.TaskResult.Succeeded, `Successfully update app ${editId}`);
     }
     catch (err) {
@@ -44,8 +35,8 @@ function getActiveEdit(appId: string, token: string): string {
     var request = require('sync-request');
     var options = { 'headers': { 'Authorization': `bearer ${token}`, "accept": "application/json" } };
     var res = request('GET', `${endpoint}/${appId}/edits`, options);
+    console.log(res);
 
-    console.log(`GET - Retrieve active edits. Code: ${res.statusCode}`);
     if (res.statusCode == 200) {
         var obj = JSON.parse(res.getBody().toString());
         console.log(`GET - Retrieve active edits success. Status: ${obj.status} | Id: ${obj.id}`);
@@ -63,34 +54,12 @@ function createNewEdit(appId: string, token: string): string {
     var options = { 'headers': { 'Authorization': `bearer ${token}`, "accept": "application/json" } };
     var res = request('POST', `${endpoint}/${appId}/edits`, options);
 
-    console.log(`POST - Create new edits. Code: ${res.statusCode}`);
     if (res.statusCode == 200) {
         var obj = JSON.parse(res.getBody().toString());
         console.log(`POST - Create new edits success. Status: ${obj.status} | Id: ${obj.id}`);
         return obj.id;
     } else {
-        throw `POST - Create new edits. Code: ${res.statusCode}`;
-    }
-}
-
-function updateApk(appId: string, editId: string, apkFilePath: string, token: string) {
-    var request = require('sync-request');
-    var fileBuffer = fs.readFileSync(apkFilePath, { encoding: 'utf8', flag: 'r' })
-    var options = {
-        'headers': {
-            'Authorization': `bearer ${token}`,
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Content-Length': fileBuffer.length,
-            'fileName': apkFilePath.split('\\')?.pop()?.split('/').pop()?.toString()
-        },
-        'body': fileBuffer
-    };
-    var res = request('POST', `${endpoint}/${appId}/edits/${editId}/apks/upload`, options);
-    console.log(`POST - Upload apk. Code: ${res.statusCode}`);
-    if (res.statusCode == 200) {
-        console.log(`POST - Upload apk success`);
-    } else {
-        throw `POST - Upload apk fail. Code: ${res.statusCode}`
+        throw `POST - Create new edits. Code: ${res.statusCode}. Resp: ^${res.getBody()}`;
     }
 }
 

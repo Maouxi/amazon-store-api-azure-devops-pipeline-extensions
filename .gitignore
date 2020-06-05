@@ -4,3 +4,9 @@ amazonStoreEdit/amazonStoreEditTask/node_modules/*
 amazonStoreAuth/amazonStoreAuthTask/node_modules/*
 
 *.vsix
+
+AmazonAppStoreEdit/AmazonAppStoreEditTask/node_modules/*
+
+AmazonAppStoreReplaceApk/AmazonAppStoreReplaceApkTask/node_modules/*
+
+AmazonAppStoreAuth/AmazonAppStoreAuthTask/node_modules/*

@@ -1,5 +1,4 @@
 import tl = require('azure-pipelines-task-lib/task');
-import https = require('https')
 import querystring = require('querystring');
 
 async function run() {
@@ -31,16 +30,16 @@ async function run() {
         };
 
         var res = request('POST', `https://api.amazon.com/auth/o2/token`, options);
-        console.log(`POST - Authenticate .Code: ${res.statusCode}`);
+        console.log(res);
 
         if (res.statusCode = 200) {
+            console.log(`POST - Authenticate success`);
             var obj = JSON.parse(res.getBody().toString());
-            console.log(`POST - Authenticate .Code: ${res.statusCode}`);
 
-            tl.setVariable('AmazonAuthToken', `${obj.access_token}`);
+            tl.setVariable('AmazonAccessToken', `${obj.access_token}`);
             tl.setResult(tl.TaskResult.Succeeded, "Success");
         } else {
-            throw `POST - Authenticate fail. Code: ${res.statusCode}`;
+            throw `POST - Authenticate fail. Code: ${res.statusCode}. Resp: ^${res.getBody()}`;
         }
     }
     catch (err) {

@@ -1,10 +1,10 @@
 {
     "manifestVersion": 1,
-    "id": "amazon-app-store-commit",
+    "id": "amazon-app-store-edit",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.1",
-    "name": "Amazon AppStore commit API",
-    "description": "Provide commit task for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
+    "version": "0.1.6",
+    "name": "Amazon AppStore create or edit update API",
+    "description": "Create a new Edit or get the id of the existing Edit from the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
     "public": false,
     "targets": [
         {
@@ -16,7 +16,7 @@
     ],
     "files": [
         {
-            "path": "amazonStoreCommitTask"
+            "path": "AmazonAppStoreEditTask"
         }
     ],
     "contributions": [
@@ -27,7 +27,7 @@
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "amazonStoreCommitTask"
+                "name": "AmazonAppStoreEditTask"
             }
         }
     ]

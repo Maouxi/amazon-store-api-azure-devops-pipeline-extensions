@@ -1,22 +1,22 @@
 {
     "manifestVersion": 1,
-    "id": "amazon-app-store-auth",
+    "id": "amazon-app-store-replace-apk",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.19",
-    "name": "Amazon AppStore authentication API",
-    "description": "Provide authentication task for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
+    "version": "0.1.0",
+    "name": "Amazon AppStore replace apk API",
+    "description": "Replace an apk of an active edit for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
     "public": false,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
-    ],
+    ],    
     "categories": [
         "Azure Pipelines"
     ],
     "files": [
         {
-            "path": "amazonStoreAuthTask"
+            "path": "AmazonAppStoreReplaceApkTask"
         }
     ],
     "contributions": [
@@ -27,7 +27,7 @@
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "amazonStoreAuthTask"
+                "name": "AmazonAppStoreReplaceApkTask"
             }
         }
     ]
