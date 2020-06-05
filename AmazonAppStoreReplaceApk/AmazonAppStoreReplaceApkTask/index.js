@@ -14,7 +14,7 @@ const fs = require("fs");
 var endpoint = "https://developer.amazon.com/api/appstore/v1/applications";
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
-        var token = tl.getVariable("AmazonAuthTask.AmazonAuthToken");
+        var token = tl.getVariable("AmazonAppStoreAuthTask.AmazonAccessToken");
         if (token == undefined) {
             tl.setResult(tl.TaskResult.Failed, `You need to use the Auth task first to get a valid access_token`);
             return;

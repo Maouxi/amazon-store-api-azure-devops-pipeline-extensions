@@ -3,7 +3,7 @@ import tl = require('azure-pipelines-task-lib/task');
 var endpoint = "https://developer.amazon.com/api/appstore/v1/applications";
 
 async function run() {
-    var token = tl.getVariable("AmazonAuthTask.AmazonAuthToken");
+    var token = tl.getVariable("AmazonAppStoreAuthTask.AmazonAccessToken");
     if (token == undefined) {
         tl.setResult(tl.TaskResult.Failed, `You need to use the Auth task first to get a valid access_token`);
         return;
@@ -13,16 +13,11 @@ async function run() {
         tl.setResult(tl.TaskResult.Failed, 'AppId is required');
         return;
     }
-    const apkFilePath: string | undefined = tl.getPathInput('apkFilePath', true);
-    if (apkFilePath == undefined) {
-        tl.setResult(tl.TaskResult.Failed, 'Apk file path is required');
-        return;
-    }
 
     try {
         console.log(`- Start create or edit for appId: ${appId}`);
         var editId = getActiveEdit(appId, token);
-        tl.setVariable("AmazonUpdateEditId", editId)
+        tl.setVariable("AmazonEditId", editId)
         tl.setResult(tl.TaskResult.Succeeded, `Successfully update app ${editId}`);
     }
     catch (err) {
@@ -35,7 +30,6 @@ function getActiveEdit(appId: string, token: string): string {
     var request = require('sync-request');
     var options = { 'headers': { 'Authorization': `bearer ${token}`, "accept": "application/json" } };
     var res = request('GET', `${endpoint}/${appId}/edits`, options);
-    console.log(res);
 
     if (res.statusCode == 200) {
         var obj = JSON.parse(res.getBody().toString());

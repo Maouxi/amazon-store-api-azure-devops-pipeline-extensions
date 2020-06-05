@@ -14,7 +14,7 @@ var endpoint = "https://developer.amazon.com/api/appstore/v1/applications";
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('Start commit app');
-        var token = tl.getVariable("AmazonAppStoreAuthTask.AmazonAuthToken");
+        var token = tl.getVariable("AmazonAppStoreAuthTask.AmazonAccessToken");
         if (token == undefined) {
             tl.setResult(tl.TaskResult.Failed, `You need to use the Auth task first to get a valid access_token`);
             return;
@@ -24,7 +24,7 @@ function run() {
             tl.setResult(tl.TaskResult.Failed, 'AppId is required');
             return;
         }
-        var editId = tl.getVariable("AmazonAppStoreEditTask.AmazonUpdateEditId");
+        var editId = tl.getVariable("AmazonAppStoreEditTask.AmazonEditId");
         if (editId == undefined) {
             tl.setResult(tl.TaskResult.Failed, `You need to use the Edit task first to get a valid editId`);
             return;

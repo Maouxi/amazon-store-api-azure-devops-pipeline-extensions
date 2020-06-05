@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "amazon-app-store-auth",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.23",
+    "version": "0.1.24",
     "name": "Amazon AppStore authentication API",
     "description": "Get an authentication access token for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
     "public": false,
