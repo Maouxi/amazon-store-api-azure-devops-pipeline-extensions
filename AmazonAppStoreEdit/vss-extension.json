@@ -3,14 +3,14 @@
     "id": "amazon-app-store-edit",
     "publisher": "MaxenceRaoux",
     "version": "0.1.12",
-    "name": "Amazon AppStore create or edit update API",
+    "name": "Amazon AppStore get edit id API",
     "description": "Create a new Edit or get the id of the existing Edit from the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
     "public": false,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
-    ],    
+    ],
     "categories": [
         "Azure Pipelines"
     ],
@@ -20,7 +20,7 @@
         }
     ],
     "icons": {
-        "default": "images/extension-icon.png"        
+        "default": "images/extension-icon.png"
     },
     "contributions": [
         {
