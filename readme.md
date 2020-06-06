@@ -10,48 +10,34 @@ Tasks for Amazon AppStore submission api and make continuous delivery on azure p
 
 ## Features
 
-- Authentication
-- Get the current update
+- Authentication and create update
 - Replace an apk
 - Commit the update
 
 ## Usage
 
-### Authenticiation task
+### Prepare task
 
 _Inputs_
 - clientId: Amazon submission API client id
 - clientSecret: Amazon submission API client secret
-
-_Output_
-- AmazonAccessToken : Amazon submission API access token
-
-Authentication to the submission API. Need to be called once before other tasks in a job. 
-
-The Amazon access token can be retrieve in any other tasks as a variable. `$(AmazonAppStoreAuthTask.AmazonAccessToken)`.
-
-### Create or Edit task
-
-_Prerequesite_
-
-- Need an access token provided by te Authentification task.
-
-_Inputs_
 - appId: The package name or app identifier for the app
 
 _Output_
+- AmazonAccessToken : Amazon submission API access token
 - AmazonEditId : Amazon AppStore editId
 
-Create or retrieve the current edit of the update. Need to be called before made changes to the update in the job. 
+Authentication to the submission API and get or create the current update. 
+Need to be called once before other tasks in a job. 
 
-The Amazon edit id can be retrieve in any other tasks as a variable. `$(AmazonAppStoreEditTask.AmazonEditId)`. 
+The Amazon access token can be retrieve in any other tasks as a variable. `$(AmazonAppStorePrepareTask.AmazonAccessToken)`.
+The Amazon edit id can be retrieve in any other tasks as a variable. `$(AmazonAppStorePrepareTask.AmazonEditId)`.
 
 ### Replace apk task
 
 _Prerequesite_
 
-- Need an access token provided by te authentification task.
-- Need an edit id provided by the create or edit task
+- Prepare task need to be run first
 
 _Inputs_
 - appId: The package name or app identifier for the app
@@ -63,8 +49,7 @@ Replace the apk in the current edit
 
 _Prerequesite_
 
-- Need an access token provided by te authentification task.
-- Need an edit id provided by the create or edit task
+- Prepare task need to be run first
 
 _Inputs_
 - appId: The package name or app identifier for the app

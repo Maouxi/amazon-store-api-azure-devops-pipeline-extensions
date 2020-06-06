@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "amazon-app-store-commit",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "name": "Amazon AppStore commit API",
     "description": "Commit an update for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
     "public": false,

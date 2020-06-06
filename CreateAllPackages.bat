@@ -2,15 +2,8 @@
 
 ECHO START CREATE PACKAGES
 
-ECHO Package auth task
-cd AmazonAppStoreAuth\AmazonAppStoreAuthTask
-call tsc
-cd ..
-call tfx extension create --manifest-globs vss-extension.json
-cd ..
-
-ECHO Package edit task
-cd AmazonAppStoreEdit\AmazonAppStoreEditTask
+ECHO Package prepare task
+cd AmazonAppStorePrepare\AmazonAppStorePrepareTask
 call tsc
 cd ..
 call tfx extension create --manifest-globs vss-extension.json

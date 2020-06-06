@@ -14,14 +14,11 @@ const fs = require("fs");
 var endpoint = "https://developer.amazon.com/api/appstore/v1/applications";
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
-        var token = tl.getVariable("AmazonAppStoreAuthTask.AmazonAccessToken");
-        if (token == undefined) {
-            tl.setResult(tl.TaskResult.Failed, `You need to use the Auth task first to get a valid access_token`);
-            return;
-        }
-        var editId = tl.getVariable("AmazonAppStoreEditTask.AmazonEditId");
-        if (editId == undefined) {
-            tl.setResult(tl.TaskResult.Failed, `You need to use the Edit task first to get a valid editId`);
+        console.log('== Start replace apk == ');
+        var token = tl.getVariable("AmazonAppStorePrepareTask.AmazonAccessToken");
+        var editId = tl.getVariable("AmazonAppStorePrepareTask.AmazonEditId");
+        if (token == undefined || editId == undefined) {
+            tl.setResult(tl.TaskResult.Failed, `You need to use the 'prepare' task first`);
             return;
         }
         const appId = tl.getInput('appId', true);
@@ -36,19 +33,19 @@ function run() {
         }
         try {
             //Get the lastest apk id
-            console.log(`- Get latest apk id for editId: ${editId}`);
+            console.log(`Get latest apk id for editId: ${editId}`);
             var apkId = getLatestApkId(appId, editId, token);
             // //Get etag for current apk
-            console.log(`- Get an etag for apk id: ${apkId}`);
+            console.log(`Get an etag for apk id: ${apkId}`);
             var etag = getApkEtag(appId, editId, apkId, token);
             //Update the current edit with a new apk
-            console.log(`- Start upload apk with id ${apkId} and etag ${etag} from file: ${apkFilePath}`);
+            console.log(`Start upload apk with id ${apkId} and etag ${etag} from file: ${apkFilePath}`);
             replaceApk(appId, editId, apkId, apkFilePath, etag, token);
             //End update
             tl.setResult(tl.TaskResult.Succeeded, `Successfully update app ${editId}`);
         }
         catch (err) {
-            console.log(`- Error: ${err}`);
+            console.log(`Error: ${err}`);
             tl.setResult(tl.TaskResult.Failed, err.message);
         }
     });
@@ -59,11 +56,11 @@ function getLatestApkId(appId, editId, token) {
     var res = request('GET', `${endpoint}/${appId}/edits/${editId}/apks`, options);
     if (res.statusCode == 200) {
         var obj = JSON.parse(res.getBody().toString());
-        console.log(`GET - Retrieve apk list success. Apk count: ${obj.length}. Latest apk id: ${obj[0].id}`);
+        console.log(`Retrieve apk list success. Apk count: ${obj.length}. Latest apk id: ${obj[0].id}`);
         return obj[0].id;
     }
     else {
-        throw `GET - Retrieve apk list fail. Code: ${res.statusCode}. Resp: ^${res.getBody()}`;
+        throw `Retrieve apk list fail. Code: ${res.statusCode}. Resp: ^${res.getBody()}`;
     }
 }
 function getApkEtag(appId, editId, apkId, token) {
@@ -71,11 +68,11 @@ function getApkEtag(appId, editId, apkId, token) {
     var options = { 'headers': { 'Authorization': `bearer ${token}`, "accept": "application/json" } };
     var res = request('GET', `${endpoint}/${appId}/edits/${editId}/apks/${apkId}`, options);
     if (res.statusCode == 200) {
-        console.log(`GET - Retrieve apk etag success`);
+        console.log(`Retrieve apk etag success`);
         return res.headers.etag;
     }
     else {
-        throw `GET - Retrieve apk etag fail. Code: ${res.statusCode}. Resp: ^${res.getBody()}`;
+        throw `Retrieve apk etag fail. Code: ${res.statusCode}. Resp: ^${res.getBody()}`;
     }
 }
 function replaceApk(appId, editId, apkId, apkFilePath, etag, token) {
@@ -94,10 +91,10 @@ function replaceApk(appId, editId, apkId, apkFilePath, etag, token) {
     };
     var res = request('PUT', `${endpoint}/${appId}/edits/${editId}/apks/${apkId}/replace`, options);
     if (res.statusCode == 200) {
-        console.log(`PUT - Replace apk success`);
+        console.log(`Replace apk success`);
     }
     else {
-        throw `PUT - Replace apk fail. Code: ${res.statusCode}. Resp: ^${res.getBody()}`;
+        throw `Replace apk fail. Code: ${res.statusCode}. Resp: ^${res.getBody()}`;
     }
 }
 run();

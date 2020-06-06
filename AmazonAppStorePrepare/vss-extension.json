@@ -1,10 +1,10 @@
 {
     "manifestVersion": 1,
-    "id": "amazon-app-store-edit",
+    "id": "amazon-app-store-prepare",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.12",
-    "name": "Amazon AppStore get edit id API",
-    "description": "Create a new Edit or get the id of the existing Edit from the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
+    "version": "0.1.1",
+    "name": "Prepare call to Amazon AppStore API",
+    "description": "Prepare call to amazon AppStore Api to make continuous delivery on azure pipeline build or release.",
     "public": false,
     "targets": [
         {
@@ -16,11 +16,11 @@
     ],
     "files": [
         {
-            "path": "AmazonAppStoreEditTask"
+            "path": "AmazonAppStorePrepareTask"
         }
     ],
     "icons": {
-        "default": "images/extension-icon.png"
+        "default": "images/extension-icon.png"        
     },
     "contributions": [
         {
@@ -30,7 +30,7 @@
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "AmazonAppStoreEditTask"
+                "name": "AmazonAppStorePrepareTask"
             }
         }
     ]

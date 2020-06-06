@@ -1,7 +1,7 @@
 {
-  "name": "AmazonAuthTask",
+  "name": "AmazonAppStorePrepareTask",
   "version": "1.0.0",
-  "description": "Authenticate to the amazon api",
+  "description": "Authenticate and get editId from the amazon api",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
