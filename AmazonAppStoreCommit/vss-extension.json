@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "name": "Amazon AppStore commit API",
     "description": "Commit an update for the Amazon AppStore submission API and make continuous delivery on Azure DevOps Services pipeline build or release.",
-    "public": false,
+    "public": true,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
