@@ -1,12 +1,6 @@
 # Amazon Sumbmision API for Azure Devops pipeline
 
-Tasks for Amazon AppStore submission api and make continuous delivery on azure pipeline build or release.",
-
-## TODO
-
-- Merge the authentication and the get current update tasks. 
-- Add new task to edit update content or merge it with the replace apk task
-- Allow user to add the token or editId as task input ?
+Tasks for Amazon AppStore submission api and make continuous delivery on azure pipeline build or release.
 
 ## Features
 
