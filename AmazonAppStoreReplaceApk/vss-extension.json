@@ -2,15 +2,32 @@
     "manifestVersion": 1,
     "id": "amazon-app-store-replace-apk",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.7",
+    "version": "0.2.0",
     "name": "Amazon AppStore replace apk API",
-    "description": "Replace an apk of an active edit for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
-    "public": false,
+    "description": "Replace an apk of an active edit for the Amazon AppStore submission API and make continuous delivery on Azure DevOps Services pipeline build or release.",
+    "public": true,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
-    ],    
+    ],
+    "repository": {
+        "type": "git", 
+        "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions"
+    },
+    "tags": [
+        "amazon",
+        "appstore",
+        "submission",
+        "api",
+        "replace",
+        "apk"
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
     "categories": [
         "Azure Pipelines"
     ],
@@ -20,7 +37,7 @@
         }
     ],
     "icons": {
-        "default": "images/extension-icon.png"        
+        "default": "images/extension-icon.png"
     },
     "contributions": [
         {

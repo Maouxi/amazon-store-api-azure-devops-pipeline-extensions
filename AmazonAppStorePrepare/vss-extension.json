@@ -2,15 +2,31 @@
     "manifestVersion": 1,
     "id": "amazon-app-store-prepare",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "name": "Prepare call to Amazon AppStore API",
-    "description": "Prepare call to amazon AppStore Api to make continuous delivery on azure pipeline build or release.",
-    "public": false,
+    "description": "Prepare call to amazon AppStore submission API to make continuous delivery on Azure DevOps Services pipeline build or release.",
+    "public": true,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
     ],
+    "repository": {
+        "type": "git", 
+        "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions"
+    },
+    "tags": [
+        "amazon",
+        "appstore",
+        "submission",
+        "api",
+        "autentification"
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
     "categories": [
         "Azure Pipelines"
     ],
@@ -20,7 +36,7 @@
         }
     ],
     "icons": {
-        "default": "images/extension-icon.png"        
+        "default": "images/extension-icon.png"
     },
     "contributions": [
         {

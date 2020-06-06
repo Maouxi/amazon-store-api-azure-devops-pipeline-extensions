@@ -1,6 +1,6 @@
-# Amazon Sumbmision API for Azure Devops pipeline
+# Amazon Sumbmision API for Azure DevOps Services pipeline
 
-Tasks for Amazon AppStore submission api and make continuous delivery on azure pipeline build or release.
+Tasks for Amazon AppStore submission api and make continuous delivery on Azure DevOps Services pipeline build or release.
 
 ## Features
 

@@ -2,15 +2,31 @@
     "manifestVersion": 1,
     "id": "amazon-app-store-commit",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.8",
+    "version": "0.2.0",
     "name": "Amazon AppStore commit API",
-    "description": "Commit an update for the Amazon AppStore api and make continuous delivery on azure pipeline build or release.",
+    "description": "Commit an update for the Amazon AppStore submission API and make continuous delivery on Azure DevOps Services pipeline build or release.",
     "public": false,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
-    ],    
+    ],
+    "repository": {
+        "type": "git", 
+        "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions"
+    },
+    "tags": [
+        "amazon",
+        "appstore",
+        "submission",
+        "api",
+        "commit"
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
     "categories": [
         "Azure Pipelines"
     ],
@@ -20,7 +36,7 @@
         }
     ],
     "icons": {
-        "default": "images/extension-icon.png"        
+        "default": "images/extension-icon.png"
     },
     "contributions": [
         {
