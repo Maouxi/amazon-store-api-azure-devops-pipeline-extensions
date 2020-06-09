@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "amazon-app-store-prepare",
     "publisher": "MaxenceRaoux",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "name": "Prepare call to Amazon AppStore API",
     "description": "Prepare call to amazon AppStore submission API to make continuous delivery on Azure DevOps Services pipeline build or release.",
     "public": true,
