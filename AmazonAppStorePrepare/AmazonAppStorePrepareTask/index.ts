@@ -14,7 +14,7 @@ async function run() {
             tl.setResult(tl.TaskResult.Failed, 'ClientId is required');
             return;
         }
-        
+
         const clientSecret: string | undefined = tl.getInput('clientSecret', true);
         if (clientSecret == undefined) {
             tl.setResult(tl.TaskResult.Failed, 'ClientSecret is required');
@@ -75,14 +75,15 @@ function getActiveEdit(appId: string, token: string): string {
     var request = require('sync-request');
     var options = { 'headers': { 'Authorization': `bearer ${token}`, "accept": "application/json" } };
     var res = request('GET', `${endpoint}/${appId}/edits`, options);
-
     if (res.statusCode == 200) {
         var obj = JSON.parse(res.getBody().toString());
         console.log(`Retrieve active edits success. Status: ${obj.status} | Id: ${obj.id}`);
-        return obj.id;
-    } else if (res.statusCode == 404) {
-        console.log(`Retrieve active edits not found.`);
-        return createNewEdit(appId, token);
+        if (obj.id == undefined) {
+            console.log(`Retrieve active edits not found. Create a new edit.`);
+            return createNewEdit(appId, token);
+        } else {
+            return obj.id;
+        }
     } else {
         throw `Retrieve active edits fail. Code: ${res.statusCode}`;
     }

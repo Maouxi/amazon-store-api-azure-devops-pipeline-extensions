@@ -75,11 +75,13 @@ function getActiveEdit(appId, token) {
     if (res.statusCode == 200) {
         var obj = JSON.parse(res.getBody().toString());
         console.log(`Retrieve active edits success. Status: ${obj.status} | Id: ${obj.id}`);
-        return obj.id;
-    }
-    else if (res.statusCode == 404) {
-        console.log(`Retrieve active edits not found.`);
-        return createNewEdit(appId, token);
+        if (obj.id == undefined) {
+            console.log(`Retrieve active edits not found.`);
+            return createNewEdit(appId, token);
+        }
+        else {
+            return obj.id;
+        }
     }
     else {
         throw `Retrieve active edits fail. Code: ${res.statusCode}`;
