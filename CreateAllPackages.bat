@@ -10,6 +10,14 @@ cd ..
 call tfx extension create --manifest-globs vss-extension.json
 cd ..
 
+ECHO Package edit task
+cd AmazonAppStoreEdit\AmazonAppStoreEditTask
+call npm install
+call tsc
+cd ..
+call tfx extension create --manifest-globs vss-extension.json
+cd ..
+
 ECHO Package replace apk task
 cd AmazonAppStoreReplaceApk\AmazonAppStoreReplaceApkTask
 call npm install

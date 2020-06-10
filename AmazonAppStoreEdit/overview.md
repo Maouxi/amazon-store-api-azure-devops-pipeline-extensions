@@ -1,4 +1,4 @@
-This extension allow you to commit the current update to the Amazon AppStore. The [Prepare call to Amazon AppStore API](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-prepare) need to be execute before this task to made an authentification and create/get the update edit.
+This extension allow you to update and edit of the current update for an Amazon AppStore app publish. The [Prepare call to Amazon AppStore API](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-prepare) need to be execute before this task to made an authentification and create/get the update edit.
 
 Available tasks: 
 
@@ -11,9 +11,6 @@ Available tasks:
 
 [GitHub project readme](https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions)
 
-# Task input
+# Task inputs
+
 - appId: The package name or app identifier for the app
-
-# Screenshot
-
-[![screenshot](images/screenshot.png "Screenshot")](images/screenshot.png)

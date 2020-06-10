@@ -12,3 +12,7 @@ AmazonAppStoreReplaceApk/AmazonAppStoreReplaceApkTask/node_modules/*
 AmazonAppStoreAuth/AmazonAppStoreAuthTask/node_modules/*
 
 AmazonAppStorePrepare/AmazonAppStorePrepareTask/node_modules/*
+
+AmazonAppStoreEdit/AmazonAppStorePrepareTask/node_modules/*
+
+*.js
