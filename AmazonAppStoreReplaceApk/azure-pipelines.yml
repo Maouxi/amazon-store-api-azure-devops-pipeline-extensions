@@ -1,10 +1,6 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 trigger:
 - master
+- develop
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -16,6 +12,24 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    cd AmazonAppStoreReplaceApk
+    npm install -g tfx-cli
+    cd AmazonAppStoreReplaceApkTask
     npm install
-    npm run build
-  displayName: 'npm install and build'
+    tsc
+    cd ..
+    tfx extension create --manifest-globs vss-extension.json
+  displayName: 'Build extension'
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/*.vsix'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+  displayName: 'Archive vsix'
+  
+- task: PublishBuildArtifacts@1
+  displayName: Publish artifacts
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
