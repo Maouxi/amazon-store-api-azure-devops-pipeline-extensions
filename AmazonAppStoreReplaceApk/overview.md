@@ -1,7 +1,19 @@
-# Prerequisites
+This extension allow you to replace an apk into a current update for an Amazon AppStore app publish. The [Prepare call to Amazon AppStore API](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-prepare) need to be execute before this task to made an authentification and create/get the update edit.
 
-The [Prepare call to Amazon AppStore API](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-prepare) need to be execute before this task.
+Available tasks: 
+
+- [Prepare task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-prepare)
+- [Replace apk task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-replace-apk)
+- [Commit task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-commit)
+
+# Get started 
+
+[GitHub project readme](https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions)
 
 # Task inputs
 - appId: The package name or app identifier for the app
 - apkFilePath: Path to the apk file. 
+
+# Screenshot
+
+[![screenshot](images/screenshot.png "Screenshot")](images/screenshot.png)

@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "amazon-app-store-commit",
     "publisher": "MaxenceRaoux",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "name": "Amazon AppStore commit API",
     "description": "Commit an update for the Amazon AppStore submission API and make continuous delivery on Azure DevOps Services pipeline build or release.",
     "public": true,
@@ -12,7 +12,7 @@
         }
     ],
     "repository": {
-        "type": "git", 
+        "type": "git",
         "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions"
     },
     "tags": [
@@ -33,14 +33,45 @@
     "categories": [
         "Azure Pipelines"
     ],
+    "screenshots": [
+        {
+            "path": "images/screenshot.png"
+        }
+    ],
     "files": [
         {
             "path": "AmazonAppStoreCommitTask"
+        },
+        {
+            "path": "images/screenshot.png",
+            "addressable": true
+        },
+        {
+            "path": "images/extension-icon.png",
+            "addressable": true
         }
     ],
     "icons": {
         "default": "images/extension-icon.png"
     },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions"
+        },
+        "support": {
+            "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions"
+        },
+        "issues": {
+            "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions/issues"
+        }
+    },
+    "badges": [
+        {
+            "href": "https://dev.azure.com/maxenceraoux/AmazonDevOpsExtensions/_build?definitionId=8",
+            "uri": "https://dev.azure.com/maxenceraoux/AmazonDevOpsExtensions/_apis/build/status/CommitTask%20build?branchName=develop",
+            "description": "Develop"
+        }
+    ],
     "contributions": [
         {
             "id": "custom-build-release-task",

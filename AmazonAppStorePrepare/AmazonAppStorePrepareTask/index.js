@@ -76,7 +76,7 @@ function getActiveEdit(appId, token) {
         var obj = JSON.parse(res.getBody().toString());
         console.log(`Retrieve active edits success. Status: ${obj.status} | Id: ${obj.id}`);
         if (obj.id == undefined) {
-            console.log(`Retrieve active edits not found.`);
+            console.log(`Retrieve active edits not found. Create a new edit.`);
             return createNewEdit(appId, token);
         }
         else {
