@@ -23,4 +23,10 @@ steps:
     npm install
     cd ..
     tfx extension create --manifest-globs vss-extension.json
-  displayName: 'npm install'
+  displayName: 'Build extension'
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/*.vsix'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+  displayName: 'Archive vsix'
