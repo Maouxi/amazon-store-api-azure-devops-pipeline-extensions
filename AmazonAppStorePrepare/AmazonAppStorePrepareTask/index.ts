@@ -6,27 +6,25 @@ var endpoint = "https://developer.amazon.com/api/appstore/v1/applications";
 async function run() {
     console.log('== Start Amazon Submission API preparation ==');
 
+    const clientId: string | undefined = tl.getInput('clientId', true);
+    if (clientId == undefined) {
+        tl.setResult(tl.TaskResult.Failed, 'ClientId is required');
+        return;
+    }
+
+    const clientSecret: string | undefined = tl.getInput('clientSecret', true);
+    if (clientSecret == undefined) {
+        tl.setResult(tl.TaskResult.Failed, 'ClientSecret is required');
+        return;
+    }
+
+    const appId: string | undefined = tl.getInput('appId', true);
+    if (appId == undefined) {
+        tl.setResult(tl.TaskResult.Failed, 'AppId is required');
+        return;
+    }
+
     try {
-        var request = require('sync-request');
-
-        const clientId: string | undefined = tl.getInput('clientId', true);
-        if (clientId == undefined) {
-            tl.setResult(tl.TaskResult.Failed, 'ClientId is required');
-            return;
-        }
-
-        const clientSecret: string | undefined = tl.getInput('clientSecret', true);
-        if (clientSecret == undefined) {
-            tl.setResult(tl.TaskResult.Failed, 'ClientSecret is required');
-            return;
-        }
-
-        const appId: string | undefined = tl.getInput('appId', true);
-        if (appId == undefined) {
-            tl.setResult(tl.TaskResult.Failed, 'AppId is required');
-            return;
-        }
-
         console.log(`Authenticiate to the api`);
 
         var token = getToken(clientId, clientSecret);
