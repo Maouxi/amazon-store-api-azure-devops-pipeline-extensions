@@ -6,10 +6,13 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: Bash@3
+  displayName: Build and package tasks
+  inputs:
+    filePath: '$(System.DefaultWorkingDirectory)/CreateAllPackages.bat'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: CopyFiles@2
+  displayName: Copy aab result files
+  inputs:
+    contents: '*.vsix'
+    targetFolder: '$(build.artifactStagingDirectory)'
