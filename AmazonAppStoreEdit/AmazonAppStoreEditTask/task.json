@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
-    "id": "7e8a25ca-d743-47d9-8b63-9f98f26eac5b",
+    "id": "6b393476-26cd-46bd-8104-e5cb659ae51b",
     "name": "AmazonAppStoreEditTask",
     "friendlyName": "Amazon AppStore edit Task",
     "description": "Update the current edit",
@@ -10,7 +10,7 @@
     "version": {
         "Major": 0,
         "Minor": 1,
-        "Patch": 0
+        "Patch": 1
     },
     "inputs": [
         {
@@ -35,7 +35,7 @@
             "label": "Title",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "Application title"
+            "helpMarkDown": "Application display title."
         },
         {
             "name": "shortDescription",
@@ -43,7 +43,7 @@
             "label": "Short description",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "Short description"
+            "helpMarkDown": "A brief description of your app, shown on mobile devices."
         },        
         {
             "name": "fullDescription",
@@ -51,7 +51,7 @@
             "label": "Full description",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "Full description"
+            "helpMarkDown": "A lengthier description of your app, for the Appstore website."
         },
         {
             "name": "recentChanges",
@@ -59,7 +59,7 @@
             "label": "Recent changes",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "Recent changes"
+            "helpMarkDown": "Release notes. Changes made in this release."
         },   
         {
             "name": "featureBullets",
@@ -67,7 +67,7 @@
             "label": "Feature bullets",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "App features. Separate by line break."
+            "helpMarkDown": "Product feature bullets. One feature per line."
         },    
         {
             "name": "keywords",
@@ -75,7 +75,7 @@
             "label": "Keywords",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "App keywords. Separate with ';'"
+            "helpMarkDown": "App keywords separate with ';'."
         } 
     ],
     "execution": {

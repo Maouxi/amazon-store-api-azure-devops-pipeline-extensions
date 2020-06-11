@@ -1,8 +1,6 @@
 import tl = require('azure-pipelines-task-lib/task');
-import querystring = require('querystring');
 import { EditListing } from './model/edit-listing';
-import { EditListingResult } from './model/edit-listing-result';
-import {Api} from './api/amazon-submission-api';
+import { Api } from './api/amazon-submission-api';
 
 async function run() {
     console.log('== Start edit app update ==');
