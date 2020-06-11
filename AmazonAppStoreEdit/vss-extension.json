@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "amazon-app-store-edit",
     "publisher": "MaxenceRaoux",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "name": "Amazon AppStore edit update API",
     "description": "Edit an update for the amazon AppStore submission API to make continuous delivery on Azure DevOps Services pipeline build or release.",
     "public": false,
