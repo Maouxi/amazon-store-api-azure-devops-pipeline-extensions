@@ -39,7 +39,7 @@
         },
         {
             "name": "shortDescription",
-            "type": "string",
+            "type": "multiLine",
             "label": "Short description",
             "defaultValue": "",
             "required": false,
@@ -47,7 +47,7 @@
         },        
         {
             "name": "fullDescription",
-            "type": "string",
+            "type": "multiLine",
             "label": "Full description",
             "defaultValue": "",
             "required": false,
@@ -55,7 +55,7 @@
         },
         {
             "name": "recentChanges",
-            "type": "string",
+            "type": "multiLine",
             "label": "Recent changes",
             "defaultValue": "",
             "required": false,
@@ -63,11 +63,11 @@
         },   
         {
             "name": "featureBullets",
-            "type": "string",
+            "type": "multiLine",
             "label": "Feature bullets",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "App features. Handle feature seaprate by ';'"
+            "helpMarkDown": "App features. Separate by line break."
         },    
         {
             "name": "keywords",
