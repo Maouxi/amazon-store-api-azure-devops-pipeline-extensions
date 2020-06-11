@@ -14,8 +14,8 @@ Available tasks:
 # Task inputs
 For optional input, leave empty the field to don't update them and keep old values. 
 
-- appId: The package name or app identifier for the app
-- language: The description language to udpate in ISO 639-1
+- appId*: The package name or app identifier for the app
+- language*: The description language to udpate in ISO 639-1
 - title: Display title
 - shortDescription: A brief description of the app, shown on mobile devices.
 - fullDescription: A lengthier description of the app, for the Appstore website

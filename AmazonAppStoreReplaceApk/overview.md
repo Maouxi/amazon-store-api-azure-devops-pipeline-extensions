@@ -12,8 +12,8 @@ Available tasks:
 [GitHub project readme](https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions)
 
 # Task inputs
-- appId: The package name or app identifier for the app
-- apkFilePath: Path to the apk file. 
+- appId*: The package name or app identifier for the app
+- apkFilePath*: Path to the apk file. 
 
 # Screenshot
 

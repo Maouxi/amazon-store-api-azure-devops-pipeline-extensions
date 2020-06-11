@@ -14,9 +14,9 @@ Tasks for Amazon AppStore submission api and make continuous delivery on Azure D
 ### Prepare task
 
 _Inputs_
-- clientId: Amazon submission API client id
-- clientSecret: Amazon submission API client secret
-- appId: The package name or app identifier for the app
+- clientId*: Amazon submission API client id
+- clientSecret*: Amazon submission API client secret
+- appId*: The package name or app identifier for the app
 
 _Output_
 - AmazonAccessToken : Amazon submission API access token
@@ -37,8 +37,8 @@ _Prerequesite_
 _Inputs_
 For optional input, leave empty the field to don't update them and keep old values. 
 
-- appId: The package name or app identifier for the app
-- language: The description language to udpate in ISO 639-1
+- appId*: The package name or app identifier for the app
+- language*: The description language to udpate in ISO 639-1
 - title: Display title
 - shortDescription: A brief description of the app, shown on mobile devices.
 - fullDescription: A lengthier description of the app, for the Appstore website
@@ -53,8 +53,8 @@ _Prerequesite_
 - Prepare task need to be run first
 
 _Inputs_
-- appId: The package name or app identifier for the app
-- apkFilePath: Path to the apk file
+- appId*: The package name or app identifier for the app
+- apkFilePath*: Path to the apk file
 
 Replace the apk in the current edit
 
@@ -65,7 +65,7 @@ _Prerequesite_
 - Prepare task need to be run first
 
 _Inputs_
-- appId: The package name or app identifier for the app
+- appId*: The package name or app identifier for the app
 
 Commit the change to the store
 

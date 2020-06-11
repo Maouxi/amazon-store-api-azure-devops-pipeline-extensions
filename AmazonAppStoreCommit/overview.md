@@ -12,7 +12,7 @@ Available tasks:
 [GitHub project readme](https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions)
 
 # Task input
-- appId: The package name or app identifier for the app
+- appId*: The package name or app identifier for the app
 
 # Screenshot
 
