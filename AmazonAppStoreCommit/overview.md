@@ -3,6 +3,7 @@ This extension allow you to commit the current update to the Amazon AppStore. Th
 Available tasks: 
 
 - [Prepare task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-prepare)
+- [Edit task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-edit)
 - [Replace apk task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-replace-apk)
 - [Commit task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-commit)
 

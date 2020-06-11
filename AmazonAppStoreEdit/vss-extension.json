@@ -1,0 +1,71 @@
+{
+    "manifestVersion": 1,
+    "id": "amazon-app-store-edit",
+    "publisher": "MaxenceRaoux",
+    "version": "0.1.1",
+    "name": "Amazon AppStore edit update API",
+    "description": "Edit an update for the amazon AppStore submission API to make continuous delivery on Azure DevOps Services pipeline build or release.",
+    "public": false,
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "repository": {
+        "type": "git", 
+        "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions"
+    },
+    "tags": [
+        "amazon",
+        "appstore",
+        "submission",
+        "api",
+        "edit"
+    ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        },
+        "license": {
+            "path": "LICENSE"
+        }
+    },
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "files": [
+        {
+            "path": "AmazonAppStoreEditTask"
+        },
+        {
+            "path": "images/extension-icon.png",
+            "addressable": true
+        }
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions"
+        },
+        "support": {
+            "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions"
+        },
+        "issues": {
+            "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions/issues"
+        }
+    },
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "AmazonAppStoreEditTask"
+            }
+        }
+    ]
+}
