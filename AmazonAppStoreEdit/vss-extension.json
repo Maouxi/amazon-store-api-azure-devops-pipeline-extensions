@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "name": "Amazon AppStore edit update API",
     "description": "Edit an update for the amazon AppStore submission API to make continuous delivery on Azure DevOps Services pipeline build or release.",
-    "public": true,
+    "public": false,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
@@ -33,18 +33,9 @@
     "categories": [
         "Azure Pipelines"
     ],
-    "screenshots": [
-        {
-            "path": "images/screenshot.png"
-        }
-    ],
     "files": [
         {
             "path": "AmazonAppStoreEditTask"
-        },
-        {
-            "path": "images/screenshot.png",
-            "addressable": true
         },
         {
             "path": "images/extension-icon.png",
@@ -54,13 +45,6 @@
     "icons": {
         "default": "images/extension-icon.png"
     },
-    "badges": [
-        {
-            "href": "todo",
-            "uri": "todo",
-            "description": "Develop"
-        }
-    ],
     "links": {
         "getstarted": {
             "uri": "https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions"
