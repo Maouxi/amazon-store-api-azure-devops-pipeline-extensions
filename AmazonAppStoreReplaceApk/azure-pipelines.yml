@@ -1,7 +1,7 @@
 trigger:
 - master
 - develop
-- release/*
+- release/replace-apk-*
 
 pool:
   vmImage: 'ubuntu-latest'
