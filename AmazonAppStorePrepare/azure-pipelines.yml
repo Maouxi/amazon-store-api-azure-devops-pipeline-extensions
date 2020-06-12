@@ -1,5 +1,7 @@
 trigger:
-- release/prepare*
+- master
+- develop
+- release/prepare-*
 
 pool:
   vmImage: 'ubuntu-latest'
