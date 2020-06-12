@@ -1,0 +1,36 @@
+trigger:
+- master
+- develop
+- release/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    cd AmazonAppStoreEdit 
+    npm install -g tfx-cli
+    cd AmazonAppStoreEditTask
+    npm install
+    tsc
+    cd ..
+    tfx extension create --manifest-globs vss-extension.json
+  displayName: 'Build extension'
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/*.vsix'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+  displayName: 'Archive vsix'
+  
+- task: PublishBuildArtifacts@1
+  displayName: Publish artifacts
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

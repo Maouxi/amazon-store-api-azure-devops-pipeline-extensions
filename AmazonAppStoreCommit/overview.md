@@ -3,6 +3,7 @@ This extension allow you to commit the current update to the Amazon AppStore. Th
 Available tasks: 
 
 - [Prepare task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-prepare)
+- [Edit task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-edit)
 - [Replace apk task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-replace-apk)
 - [Commit task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-commit)
 
@@ -11,7 +12,7 @@ Available tasks:
 [GitHub project readme](https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions)
 
 # Task input
-- appId: The package name or app identifier for the app
+- appId*: The package name or app identifier for the app
 
 # Screenshot
 

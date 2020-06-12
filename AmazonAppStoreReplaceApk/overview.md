@@ -3,6 +3,7 @@ This extension allow you to replace an apk into a current update for an Amazon A
 Available tasks: 
 
 - [Prepare task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-prepare)
+- [Edit task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-edit)
 - [Replace apk task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-replace-apk)
 - [Commit task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-commit)
 
@@ -11,8 +12,8 @@ Available tasks:
 [GitHub project readme](https://github.com/Maouxi/amazon-store-api-azure-devops-pipeline-extensions)
 
 # Task inputs
-- appId: The package name or app identifier for the app
-- apkFilePath: Path to the apk file. 
+- appId*: The package name or app identifier for the app
+- apkFilePath*: Path to the apk file. 
 
 # Screenshot
 

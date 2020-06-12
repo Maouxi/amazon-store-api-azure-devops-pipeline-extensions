@@ -3,6 +3,7 @@ This extension allow you to prepare an Amazon AppStore app publish. It provide a
 Available tasks: 
 
 - [Prepare task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-prepare)
+- [Edit task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-edit)
 - [Replace apk task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-replace-apk)
 - [Commit task](https://marketplace.visualstudio.com/items?itemName=MaxenceRaoux.amazon-app-store-commit)
 
@@ -12,9 +13,9 @@ Available tasks:
 
 # Task inputs
 
-- clientId: Amazon submission API client id
-- clientSecret: Amazon submission API client secret
-- appId: The package name or app identifier for the app
+- clientId*: Amazon submission API client id
+- clientSecret*: Amazon submission API client secret
+- appId*: The package name or app identifier for the app
 
 # Task outputs
 
